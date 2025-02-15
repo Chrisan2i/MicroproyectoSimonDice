@@ -70,12 +70,12 @@ button {
     text-transform: uppercase;
     transition: background 0.3s, transform 0.2s;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  }
+}
   
   button:hover {
     background: #cc7a00;
     transform: scale(1.05);
-  }
+}
   
   /*Puntajes */
   #score, #high-score {
@@ -84,7 +84,7 @@ button {
     margin: 12px 0;
     text-align: center;
     width: 100%; /* Asegura que ocupe toda la anchura disponible */
-  }
+}
   
   /* Tabla de puntajes centrada */
   #score-table {
@@ -98,4 +98,28 @@ button {
     overflow: hidden;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     text-align: center; /* Centra el texto dentro de la tabla */
-  }
+}
+
+  #score-table th, #score-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+  
+  /* Mensajes */
+  #message {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+  
+  /* Ajustes responsivos */
+  @media (max-width: 600px) {
+    #game-board {
+        width: 90vw;
+    }
+    .color-btn {
+        width: 80px;
+        height: 80px;
+    }
+}
