@@ -49,3 +49,10 @@ body {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
   filter: brightness(1.5);
 }
+
+/* Colores de los botones */
+#red { background-color: #e74c3c; }
+#green { background-color: #27ae60; }
+#blue { background-color: #3498db; }
+#yellow { background-color: #f1c40f; }
+
