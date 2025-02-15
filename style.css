@@ -19,3 +19,27 @@ body {
 .hidden {
   display: none;
 }
+
+/* Tablero del juego */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 260px; /* Tamaño fijo para que se centre */
+  margin: 20px auto; /* Centrar horizontalmente */
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  justify-content: center;
+}
+
+/* Botones de colores */
+.color-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
