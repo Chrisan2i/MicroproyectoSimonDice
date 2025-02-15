@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameScreen = document.getElementById("game-screen");
     const scoreScreen = document.getElementById("score-screen");
 
+    //Sonidos del juego
+    const sounds = {
+        red: new Audio("sounds/rojo.mp3"),
+        green: new Audio("sounds/verde.mp3"),
+        blue: new Audio("sounds/azul.mp3"),
+        yellow: new Audio("sounds/amarillo.mp3"),
+        wrong: new Audio("sounds/error.mp3")
+    };
+
     // Botones del menú principal
     const startGameBtn = document.getElementById("start-game-btn");
     const viewScoresBtn = document.getElementById("view-scores-btn");
@@ -121,22 +130,30 @@ document.addEventListener("DOMContentLoaded", () => {
     function flashButton(color) {
         const button = document.getElementById(color);
         button.classList.add("active");
-        setTimeout(() => button.classList.remove("active"), 500); // Quitar el efecto después de 500ms
+    
+        if (sounds[color]) {
+            sounds[color].play();
+        }
+    
+        setTimeout(() => button.classList.remove("active"), 500);
     }
+
 
     // Función para verificar si el jugador sigue correctamente la secuencia
     function checkSequence(index) {
         if (playerSequence[index] !== gameSequence[index]) {
             messageDisplay.textContent = "¡Perdiste! Fin del juego.";
-            saveHighScore(); // Guardar el puntaje en caso de récord
-            resetGame(); // Reiniciar el juego
+            
+            sounds.wrong.play();
+    
+            saveHighScore();
+            resetGame();
             return;
         }
-
-        // Si el jugador completó la secuencia correctamente, pasa a la siguiente ronda
+    
         if (playerSequence.length === gameSequence.length) {
             score++;
-            setTimeout(nextRound, 1000); // Iniciar la siguiente ronda después de 1 segundo
+            setTimeout(nextRound, 1000);
         }
     }
 
