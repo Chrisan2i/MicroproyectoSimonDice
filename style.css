@@ -43,3 +43,9 @@ body {
   transition: transform 0.2s, filter 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.color-btn:active, .color-btn.active {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  filter: brightness(1.5);
+}
