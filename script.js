@@ -124,4 +124,50 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => button.classList.remove("active"), 500); // Quitar el efecto después de 500ms
     }
 
+    // Función para verificar si el jugador sigue correctamente la secuencia
+    function checkSequence(index) {
+        if (playerSequence[index] !== gameSequence[index]) {
+            messageDisplay.textContent = "¡Perdiste! Fin del juego.";
+            saveHighScore(); // Guardar el puntaje en caso de récord
+            resetGame(); // Reiniciar el juego
+            return;
+        }
+
+        // Si el jugador completó la secuencia correctamente, pasa a la siguiente ronda
+        if (playerSequence.length === gameSequence.length) {
+            score++;
+            setTimeout(nextRound, 1000); // Iniciar la siguiente ronda después de 1 segundo
+        }
+    }
+
+    // Función para guardar el puntaje más alto en localStorage
+    function saveHighScore() {
+        if (playerName) {
+            if (!highScores[playerName] || score > highScores[playerName]) {
+                highScores[playerName] = score; // Guardar nuevo récord
+                localStorage.setItem("highScores", JSON.stringify(highScores)); // Guardar en localStorage
+            }
+        }
+        updateScoreTable(); // Actualizar la tabla de puntajes
+    }
+
+    // Función para reiniciar el juego cuando el jugador pierde
+    function resetGame() {
+        gameSequence = [];
+        playerSequence = [];
+        score = 0;
+        scoreDisplay.textContent = "Puntaje: 0";
+    }
+    // Función para actualizar la tabla de puntajes
+    function updateScoreTable() {
+        scoreTableBody.innerHTML = ""; // Limpiar la tabla
+        const sortedScores = Object.entries(highScores).sort((a, b) => b[1] - a[1]); // Ordenar de mayor a menor
+        sortedScores.forEach(([name, score]) => {
+            let row = <tr><td>${name}</td><td>${score}</td></tr>;
+            scoreTableBody.innerHTML += row; // Agregar fila a la tabla
+        });
+    }
+
+    // Cargar la tabla de puntajes al inicio
+    updateScoreTable();
 });
