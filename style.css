@@ -1,19 +1,19 @@
 /* General */
 body {
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-  color: white;
-  margin: 0;
-  padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .hidden {
@@ -22,32 +22,32 @@ body {
 
 /* Tablero del juego */
 #game-board {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  width: 260px; /* Tamaño fijo para que se centre */
-  margin: 20px auto; /* Centrar horizontalmente */
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 260px; /* Tamaño fijo para que se centre */
+    margin: 20px auto; /* Centrar horizontalmente */
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    justify-content: center;
 }
 
 /* Botones de colores */
 .color-btn {
-  width: 120px;
-  height: 120px;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.2s, filter 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .color-btn:active, .color-btn.active {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-  filter: brightness(1.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    filter: brightness(1.5);
 }
 
 /* Colores de los botones */
@@ -56,3 +56,46 @@ body {
 #blue { background-color: #3498db; }
 #yellow { background-color: #f1c40f; }
 
+/* Botones generales */
+button {
+    background: #ff9900;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:hover {
+    background: #cc7a00;
+    transform: scale(1.05);
+  }
+  
+  /*Puntajes */
+  #score, #high-score {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+    text-align: center;
+    width: 100%; /* Asegura que ocupe toda la anchura disponible */
+  }
+  
+  /* Tabla de puntajes centrada */
+  #score-table {
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto; /* Auto para centrar horizontalmente */
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centra el texto dentro de la tabla */
+  }
