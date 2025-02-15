@@ -32,33 +32,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageDisplay = document.getElementById("message"); // Mensajes del juego
     const scoreTableBody = document.querySelector("#score-table tbody"); // Tabla de puntajes
 
-    // Boton Jugar
+    //Boton Jugar
     startGameBtn.addEventListener("click", () => {
         menuScreen.style.display = "none"; // Ocultar el menú
         gameScreen.style.display = "block"; // Mostrar la pantalla del juego
         messageDisplay.textContent = "Ingresa tu nombre para empezar";
     });
 
-    // Boton para ver Puntajes
+    //Boton para iniciar el juego
+    startBtn.addEventListener("click", () => {
+        if (!playerName) {
+            messageDisplay.textContent = "Ingresa tu nombre para jugar.";
+            return;
+        }
+        resetGame(); // Reiniciar el juego antes de comenzar
+        nextRound(); // Iniciar la primera ronda
+    });
+
+
+    //Boton para ver Puntajes
     viewScoresBtn.addEventListener("click", () => {
         menuScreen.style.display = "none"; // Ocultar el menú
         scoreScreen.style.display = "block"; // Mostrar la pantalla de puntajes
         updateScoreTable(); // Actualizar la tabla de puntajes
     });
 
-    // Boton volver al menu desde los puntajes
+    //Boton volver al menu desde los puntajes
     backToMenuBtn.addEventListener("click", () => {
         scoreScreen.style.display = "none"; // Ocultar pantalla de puntajes
         menuScreen.style.display = "flex"; // Mostrar el menú principal
     });
 
-    // Boton para volver al menu desde el juego
+    //Boton para volver al menu desde el juego
     backToMenuGameBtn.addEventListener("click", () => {
         gameScreen.style.display = "none"; // Ocultar pantalla del juego
         menuScreen.style.display = "flex"; // Mostrar el menú principal
     });
 
-    // Guarda el nombre del jugador
+    //Botones de colores
+    buttons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            const color = event.target.dataset.color;
+            flashButton(color); // Resaltar el botón presionado
+            playerSequence.push(color); // Guardar la secuencia ingresada por el jugador
+            checkSequence(playerSequence.length - 1); // Verificar si la secuencia es correcta
+        });
+    });
+
+
+    //Guarda el nombre del jugador
     saveNameBtn.addEventListener("click", () => {
         playerName = playerNameInput.value.trim(); // Guardar el nombre ingresado
         if (playerName) {
@@ -68,6 +90,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //Funcion para comenzar una nueva ronda
+    function nextRound() {
+        playerSequence = []; // Reiniciar la secuencia del jugador
+        gameSequence.push(colors[Math.floor(Math.random() * colors.length)]); // Agregar un nuevo color a la secuencia
+        scoreDisplay.textContent = `Puntaje: ${score}`; // Mostrar el puntaje actual
+        playSequence(); // Reproducir la secuencia
+    }
 
+    // Funcion para mostrar la secuencia del juego
+    function playSequence() {
+        let i = 0;
+        messageDisplay.textContent = "Observa la secuencia...";
+    
+        function showNext() {
+            if (i >= gameSequence.length) {
+                messageDisplay.textContent = "Tu turno!";
+                return;
+            }
+            flashButton(gameSequence[i]); // Mostrar color actual
+            setTimeout(() => {
+                i++;
+                showNext(); // Pasar al siguiente color
+            }, levelSpeed); // Mantener velocidad fija
+        }
+        showNext();
+    }
+
+    //Funcion para resaltar el boton cuando se muestra en la secuencia
+    function flashButton(color) {
+        const button = document.getElementById(color);
+        button.classList.add("active");
+        setTimeout(() => button.classList.remove("active"), 500); // Quitar el efecto después de 500ms
+    }
 
 });
