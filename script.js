@@ -16,15 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameScreen = document.getElementById("game-screen");
     const scoreScreen = document.getElementById("score-screen");
 
-    //Sonidos del juego
-    const sounds = {
-        red: new Audio("sounds/rojo.mp3"),
-        green: new Audio("sounds/verde.mp3"),
-        blue: new Audio("sounds/azul.mp3"),
-        yellow: new Audio("sounds/amarillo.mp3"),
-        wrong: new Audio("sounds/error.mp3")
-    };
-
     // Botones del menú principal
     const startGameBtn = document.getElementById("start-game-btn");
     const viewScoresBtn = document.getElementById("view-scores-btn");
@@ -40,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const highScoreDisplay = document.getElementById("high-score"); // Mejor puntaje
     const messageDisplay = document.getElementById("message"); // Mensajes del juego
     const scoreTableBody = document.querySelector("#score-table tbody"); // Tabla de puntajes
+
+    //Sonidos del juego
+    const sounds = {
+        red: new Audio("sounds/rojo.mp3"),
+        green: new Audio("sounds/verde.mp3"),
+        blue: new Audio("sounds/azul.mp3"),
+        yellow: new Audio("sounds/amarillo.mp3"),
+        wrong: new Audio("sounds/error.mp3")
+    };
 
     //Boton Jugar
     startGameBtn.addEventListener("click", () => {
