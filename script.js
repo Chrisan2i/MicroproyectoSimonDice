@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scoreTableBody.innerHTML = ""; // Limpiar la tabla
         const sortedScores = Object.entries(highScores).sort((a, b) => b[1] - a[1]); // Ordenar de mayor a menor
         sortedScores.forEach(([name, score]) => {
-            let row = <tr><td>${name}</td><td>${score}</td></tr>;
+            let row = `<tr><td>${name}</td><td>${score}</td></tr>`;
             scoreTableBody.innerHTML += row; // Agregar fila a la tabla
         });
     }
